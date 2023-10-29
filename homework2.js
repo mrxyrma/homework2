@@ -1,12 +1,23 @@
 //Задача 1
 function add(a) {
-  return function (b) {
-    return function (c) {
-      return a + b + c
-    }
+  let sum = a
+
+  function innerFunc(b) {
+    sum += b
+    return innerFunc
   }
+
+  innerFunc.toString = () => {
+    return sum
+  }
+
+  return innerFunc
 }
-console.log(add(2)(3)(5))
+
+const sum = add(2)(3)(5)
+
+alert(sum) //реализация вывода
+console.log(sum + 5) //реализация математической операции
 
 //Задача 2
 const str = 'one.two.three.four.five'
